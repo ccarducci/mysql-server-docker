@@ -1,0 +1,15 @@
+docker run --name=mysql_contabilita -v .:docker_mount -p 3306:3306 -d mysql/mysql-server:8.0
+docker logs mysql_contabilita
+docker exec -it mysql_contabilita mysql -uroot -p
+
+CREATE USER 'root'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'administator'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+CREATE USER 'administator'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'administator'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+
+docker exec -it mysql_contabilita /bin/bash
